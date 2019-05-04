@@ -1,0 +1,13 @@
+container:
+  image: golang:1.11
+
+build_appindicator_task:
+  env:
+    GTK: "gtk_3_22"
+  apt_deps_script:
+    - apt-get update
+    - apt-get install libgtk-3-dev libappindicator3-dev
+  main_build_script:
+    - go build -a -v -tags $GTK
+  examples_build_script:
+    - go build -v -tags $GTK examples/simple/main.go
