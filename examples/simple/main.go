@@ -9,7 +9,6 @@ import (
 
 func main() {
 	gtk.Init(nil)
-	defer gtk.Main()
 
 	menu, err := gtk.MenuNew()
 	if err != nil {
@@ -21,21 +20,21 @@ func main() {
 		log.Fatal(err)
 	}
 
-	_, err = item.Connect("activate", onActivate)
+	_, err = item.Connect("activate", func() {
+		fmt.Println("activated")
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	indicator := appindicator.New("indicator-xyz", "network-transmit-receive", appindicator.CategoryApplicationStatus)
 	indicator.SetTitle("indi-title")
-	indicator.SetLabel("indi-label")
+	indicator.SetLabel("indi-label", "")
 	indicator.SetStatus(appindicator.StatusActive)
 	indicator.SetMenu(menu)
 
 	menu.Add(item)
 	menu.ShowAll()
-}
 
-func onActivate() {
-	fmt.Println("activated")
+	gtk.Main()
 }
