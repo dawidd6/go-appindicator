@@ -4,13 +4,24 @@ package appindicator
 import "C"
 
 const (
+	// CategoryApplicationStatus defines that indicator's category is
+	// an application status.
 	CategoryApplicationStatus Category = C.APP_INDICATOR_CATEGORY_APPLICATION_STATUS
-	CategoryCommunications    Category = C.APP_INDICATOR_CATEGORY_COMMUNICATIONS
-	CategorySystemServices    Category = C.APP_INDICATOR_CATEGORY_SYSTEM_SERVICES
-	CategoryHardware          Category = C.APP_INDICATOR_CATEGORY_HARDWARE
-	CategoryOther             Category = C.APP_INDICATOR_CATEGORY_OTHER
+	// CategoryCommunications defines that indicator's category is
+	// communications.
+	CategoryCommunications Category = C.APP_INDICATOR_CATEGORY_COMMUNICATIONS
+	// CategorySystemServices defines that indicator's category is
+	// system services.
+	CategorySystemServices Category = C.APP_INDICATOR_CATEGORY_SYSTEM_SERVICES
+	// CategoryHardware defines that indicator's category is
+	// hardware.
+	CategoryHardware Category = C.APP_INDICATOR_CATEGORY_HARDWARE
+	// CategoryOther defines that indicator's category is
+	// something else.
+	CategoryOther Category = C.APP_INDICATOR_CATEGORY_OTHER
 )
 
+// Category represents a category of indicator.
 type Category int
 
 func (category Category) native() C.AppIndicatorCategory {
