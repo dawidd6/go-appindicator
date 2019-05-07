@@ -81,6 +81,7 @@ func main() {
 	check(indicator.GetTitle(), title, "title")
 
 	indicator.GetMenu().Add(item)
+	indicator.GetSecondaryActivateTarget().SetLabel("changed")
 }
 
 func check(got, set interface{}, what string) {
