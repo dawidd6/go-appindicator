@@ -13,6 +13,14 @@ type Indicator struct {
 	indicator *C.AppIndicator
 }
 
+func (indicator *Indicator) Object() *glib.Object {
+	return glib.Take(
+		unsafe.Pointer(
+			indicator.indicator,
+		),
+	)
+}
+
 /* Create stuff */
 
 func New(id, iconName string, category Category) *Indicator {
