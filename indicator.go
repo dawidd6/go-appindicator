@@ -237,3 +237,13 @@ func (indicator *Indicator) GetSecondaryActivateTarget() *gtk.MenuItem {
 	fn := gtk.WrapMap["GtkMenuItem"].(func(*glib.Object) *gtk.MenuItem)
 	return fn(object)
 }
+
+/* Helpers */
+
+func (indicator *Indicator) BuildMenuFromDesktop(desktopFile, desktopProfile string) {
+	C.app_indicator_build_menu_from_desktop(
+		indicator.indicator,
+		C.CString(desktopFile),
+		C.CString(desktopProfile),
+	)
+}
