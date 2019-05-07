@@ -11,7 +11,6 @@ Based on KSNI it also works in KDE and will fallback to generic Systray support 
 
 Also it works in:
  - Unity
- - KDE Plasma
  - GNOME Shell with [this extension](https://github.com/ubuntu/gnome-shell-extension-appindicator)
  - Budgie Desktop with [this applet](https://github.com/UbuntuBudgie/budgie-indicator-applet)
  - ...probably others that I haven't tested
