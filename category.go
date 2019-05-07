@@ -13,6 +13,6 @@ const (
 
 type Category int
 
-func (category Category) Native() C.AppIndicatorCategory {
+func (category Category) native() C.AppIndicatorCategory {
 	return (C.AppIndicatorCategory)(category)
 }

@@ -11,6 +11,6 @@ const (
 
 type Status int
 
-func (status Status) Native() C.AppIndicatorStatus {
+func (status Status) native() C.AppIndicatorStatus {
 	return (C.AppIndicatorStatus)(status)
 }

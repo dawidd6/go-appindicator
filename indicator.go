@@ -20,7 +20,7 @@ func New(id, iconName string, category Category) *Indicator {
 		indicator: C.app_indicator_new(
 			C.CString(id),
 			C.CString(iconName),
-			category.Native(),
+			category.native(),
 		),
 	}
 }
@@ -30,7 +30,7 @@ func NewWithPath(id, iconName string, category Category, iconThemePath string) *
 		indicator: C.app_indicator_new_with_path(
 			C.CString(id),
 			C.CString(iconName),
-			category.Native(),
+			category.native(),
 			C.CString(iconThemePath),
 		),
 	}
@@ -41,7 +41,7 @@ func NewWithPath(id, iconName string, category Category, iconThemePath string) *
 func (indicator *Indicator) SetStatus(status Status) {
 	C.app_indicator_set_status(
 		indicator.indicator,
-		status.Native(),
+		status.native(),
 	)
 }
 
