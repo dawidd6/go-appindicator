@@ -23,25 +23,26 @@ const (
 )
 
 func main() {
+	// GTK init and loop main at the end.
 	gtk.Init(nil)
 	defer gtk.Main()
 
+	// Example MenuItem attached to indicator.
 	item, err := gtk.MenuItemNewWithLabel(label)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	_, err = item.Connect("activate", onActivate)
-	if err != nil {
-		log.Fatal(err)
-	}
-
+	// Mandatory menu for indicator.
+	//
+	// ShowAll() will run before gtk.Main().
 	menu, err := gtk.MenuNew()
 	if err != nil {
 		log.Fatal(err)
 	}
 	defer menu.ShowAll()
 
+	// Indicator creation and checking functionality.
 	indicator := appindicator.New(id, iconName, category)
 	check(indicator.GetId(), id, "id")
 	check(indicator.GetCategory(), category, "category")
@@ -80,8 +81,29 @@ func main() {
 	indicator.SetTitle(title)
 	check(indicator.GetTitle(), title, "title")
 
+	// Fancy adding item to menu through indicator.
+	//
+	// It could be done by just calling menu.Add(item),
+	// but I want to check here if GetMenu() works correctly.
 	indicator.GetMenu().Add(item)
-	indicator.GetSecondaryActivateTarget().SetLabel("changed")
+	// Same as above.
+	indicator.GetSecondaryActivateTarget().SetLabel(label + "-changed")
+
+	// Connect callback to item.
+	_, err = item.Connect("activate", func() {
+		indicator.SetLabel(label+"-changed", "")
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// Connect callback to indicator
+	_, err = indicator.Object().Connect(appindicator.SignalNewLabel, func() {
+		fmt.Println("NewLabel: ", indicator.GetLabel())
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func check(got, set interface{}, what string) {
@@ -89,8 +111,4 @@ func check(got, set interface{}, what string) {
 		log.Println(what)
 		log.Fatal("got: ", got, " | ", "set: ", set)
 	}
-}
-
-func onActivate() {
-	fmt.Println("activated")
 }
