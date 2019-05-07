@@ -97,9 +97,17 @@ func main() {
 		log.Fatal(err)
 	}
 
-	// Connect callback to indicator
+	// Connect callback to indicator. New label.
 	_, err = indicator.Object().Connect(appindicator.SignalNewLabel, func() {
 		fmt.Println("NewLabel: ", indicator.GetLabel())
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// Connect callback to indicator. Scroll event.
+	_, err = indicator.Object().Connect(appindicator.SignalScrollEvent, func() {
+		fmt.Println("scroll")
 	})
 	if err != nil {
 		log.Fatal(err)
