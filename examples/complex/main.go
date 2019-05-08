@@ -6,6 +6,7 @@ import (
 	"github.com/gotk3/gotk3/gtk"
 	"log"
 	"reflect"
+	"time"
 )
 
 const (
@@ -112,6 +113,14 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	go func() {
+		for {
+			<-time.After(time.Second)
+			label := time.Now().Format(time.RFC1123)
+			indicator.SetLabel(label, "")
+		}
+	}()
 }
 
 func check(got, set interface{}, what string) {
