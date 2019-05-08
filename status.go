@@ -14,7 +14,3 @@ const (
 
 // Status represents status of indicator.
 type Status int
-
-func (status Status) native() C.AppIndicatorStatus {
-	return (C.AppIndicatorStatus)(status)
-}
