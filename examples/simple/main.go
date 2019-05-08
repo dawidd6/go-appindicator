@@ -1,10 +1,10 @@
 package main
 
 import (
-	"fmt"
 	"github.com/dawidd6/go-appindicator"
 	"github.com/gotk3/gotk3/gtk"
 	"log"
+	"time"
 )
 
 func main() {
@@ -20,21 +20,29 @@ func main() {
 		log.Fatal(err)
 	}
 
-	_, err = item.Connect("activate", func() {
-		fmt.Println("activated")
-	})
-	if err != nil {
-		log.Fatal(err)
-	}
-
 	indicator := appindicator.New("indicator-xyz", "network-transmit-receive", appindicator.CategoryApplicationStatus)
 	indicator.SetTitle("indi-title")
 	indicator.SetLabel("indi-label", "")
 	indicator.SetStatus(appindicator.StatusActive)
 	indicator.SetMenu(menu)
 
+	_, err = item.Connect("activate", func() {
+		indicator.SetLabel("activated", "")
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	menu.Add(item)
 	menu.ShowAll()
+
+	go func() {
+		for {
+			<-time.After(time.Second)
+			label := time.Now().Format(time.RFC1123)
+			indicator.SetLabel(label, "")
+		}
+	}()
 
 	gtk.Main()
 }
