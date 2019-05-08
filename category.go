@@ -23,7 +23,3 @@ const (
 
 // Category represents a category of indicator.
 type Category int
-
-func (category Category) native() C.AppIndicatorCategory {
-	return (C.AppIndicatorCategory)(category)
-}
