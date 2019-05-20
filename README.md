@@ -14,7 +14,8 @@ Also it works in:
  - Unity
  - GNOME Shell with [this extension](https://github.com/ubuntu/gnome-shell-extension-appindicator)
  - Budgie Desktop with [this applet](https://github.com/UbuntuBudgie/budgie-indicator-applet)
- - ...probably others that I haven't tested
+ - MATE with [this applet](https://github.com/mate-desktop/mate-indicator-applet)
+ - Xfce with [this plugin](https://goodies.xfce.org/projects/panel-plugins/xfce4-indicator-plugin)
 
 This package aims to be interoperable with [Go gtk3 bindings](https://github.com/gotk3/gotk3).
 
