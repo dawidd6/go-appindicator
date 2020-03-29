@@ -1,6 +1,5 @@
 # go-appindicator
 
-[![Build Status](https://api.cirrus-ci.com/github/dawidd6/go-appindicator.svg)](https://cirrus-ci.com/github/dawidd6/go-appindicator)
 [![Go Report Card](https://goreportcard.com/badge/github.com/dawidd6/go-appindicator)](https://goreportcard.com/report/github.com/dawidd6/go-appindicator)
 [![GoDoc](https://godoc.org/github.com/dawidd6/go-appindicator?status.svg)](https://godoc.org/github.com/dawidd6/go-appindicator)
 [![Mentioned in Awesome Go](https://awesome.re/mentioned-badge.svg)](https://github.com/avelino/awesome-go)  
