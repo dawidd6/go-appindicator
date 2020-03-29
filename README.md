@@ -2,7 +2,7 @@
 
 [![Go Report Card](https://goreportcard.com/badge/github.com/dawidd6/go-appindicator)](https://goreportcard.com/report/github.com/dawidd6/go-appindicator)
 [![GoDoc](https://godoc.org/github.com/dawidd6/go-appindicator?status.svg)](https://godoc.org/github.com/dawidd6/go-appindicator)
-[![Mentioned in Awesome Go](https://awesome.re/mentioned-badge.svg)](https://github.com/avelino/awesome-go)  
+[![Mentioned in Awesome Go](https://awesome.re/mentioned-badge.svg)](https://github.com/avelino/awesome-go)
 [![Say Thanks!](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/dawidd6)
 
 Go bindings for [libappindicator3](https://launchpad.net/libappindicator) C library.
